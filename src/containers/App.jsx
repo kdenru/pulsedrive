@@ -1,12 +1,19 @@
 import React from 'react'
-import { Reset } from 'styled-reset'
+import reset from 'styled-reset-advanced'
+import { createGlobalStyle } from 'styled-components'
 
-import { Container, Title } from './styles'
+import { Container, Title, Footer } from './styles'
+
+const GlobalStyle = createGlobalStyle`
+  ${reset}
+`;
+
 
 const App = () => (
   <Container>
-    <Title>React!</Title>
-    <Reset />
+    <Title>Host info</Title>
+    <Footer />
+    <GlobalStyle />
   </Container>
 );
 

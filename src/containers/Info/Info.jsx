@@ -8,6 +8,7 @@ import {
   Dates,
   Attributes,
   Risks,
+  Properties,
 } from 'components'
 
 import { fetchInfo } from 'store/actions'
@@ -48,6 +49,7 @@ class Info extends PureComponent {
           <Risks risk={info.data.risk} factors={info.data.riskfactors} />
           <Attributes data={info.data.attributes} />
         </Row>
+        <Properties data={info.data.properties} />
       </Container>
     )
   }

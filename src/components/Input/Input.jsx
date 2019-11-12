@@ -7,6 +7,7 @@ const Input = ({ value, onChange, onSubmit }) => (
   <StyledInput
     value={value}
     onChange={onChange}
+    placeholder="example.domain"
     onKeyDown={e => { if (e.key === 'Enter') onSubmit() }}
   />
 )

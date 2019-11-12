@@ -1,0 +1,3 @@
+export const FETCH_INFO = 'FETCH_INFO'
+export const FETCH_INFO_ERROR = 'FETCH_INFO_ERROR'
+export const FETCH_INFO_SUCCESS = 'FETCH_INFO_SUCCESS'

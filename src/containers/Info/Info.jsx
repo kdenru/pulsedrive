@@ -1,6 +1,10 @@
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import { Input } from 'components'
+
+import { fetchInfo } from 'store/actions'
 
 import { Container } from './styles'
 
@@ -9,7 +13,8 @@ class Info extends PureComponent {
 
   onSubmit = () => {
     const { query } = this.state
-    console.log(query)
+    const { onFetchInfo } = this.props
+    onFetchInfo(query)
   }
 
   onChange = event => {
@@ -32,4 +37,14 @@ class Info extends PureComponent {
   }
 }
 
-export default Info
+Info.propTypes = {
+  onFetchInfo: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = store => ({
+  info: store.root,
+})
+
+const mapDispatchToProps = { onFetchInfo: fetchInfo }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Info)

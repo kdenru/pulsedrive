@@ -1,5 +1,4 @@
 import Input from './Input'
+import Common from './Common'
 
-export { Input }
-
-export default {}
+export { Input, Common }

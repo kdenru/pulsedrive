@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { Input } from 'components'
+import { Input, Common } from 'components'
 
 import { fetchInfo } from 'store/actions'
 
@@ -23,7 +23,9 @@ class Info extends PureComponent {
   }
 
   render() {
+    const { info } = this.props
     const { query } = this.state
+    console.log(info)
 
     return (
       <Container>
@@ -32,17 +34,19 @@ class Info extends PureComponent {
           onChange={this.onChange}
           onSubmit={this.onSubmit}
         />
+        <Common data={info.data} />
       </Container>
     )
   }
 }
 
 Info.propTypes = {
+  info: PropTypes.object.isRequired,
   onFetchInfo: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = store => ({
-  info: store.root,
+  info: store,
 })
 
 const mapDispatchToProps = { onFetchInfo: fetchInfo }

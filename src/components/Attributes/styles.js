@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const Container = styled.div``
+export const Container = styled.div`
+  width: 49%;
+`
 
 export const Row = styled.div`
   font-size: 14px;

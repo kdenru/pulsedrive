@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ReactPlaceholder from 'react-placeholder'
+import isEmpty from 'lodash/isEmpty'
 
 import {
   Container,
@@ -10,18 +12,20 @@ import {
 } from './styles'
 
 
-const Attributes = ({ data }) => (
+const Attributes = ({ data, loading }) => (
   <>
-    {data.port && (
+    {(!isEmpty(data) || loading) && (
       <Container>
-        {Object.keys(data).map(key => (
-          <Row key={key}>
-            <Title>{key}</Title>
-            <AttributesRow>
-              {data[key].map(item => <Attribute key={item}>{item}</Attribute>)}
-            </AttributesRow>
-          </Row>
-        ))}
+        <ReactPlaceholder ready={!loading} rows={6}>
+          {Object.keys(data).map(key => (
+            <Row key={key}>
+              <Title>{key}</Title>
+              <AttributesRow>
+                {data[key].map(item => <Attribute key={item}>{item}</Attribute>)}
+              </AttributesRow>
+            </Row>
+          ))}
+        </ReactPlaceholder>
       </Container>
     )}
   </>
@@ -33,6 +37,7 @@ Attributes.defaultProps = {
 
 Attributes.propTypes = {
   data: PropTypes.object,
+  loading: PropTypes.bool.isRequired,
 }
 
 export default Attributes

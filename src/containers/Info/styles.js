@@ -15,6 +15,7 @@ export const Container = styled.div`
 export const Row = styled.div`
     display: flex;
     margin-top: 30px;
+    justify-content: space-between;
 `
 
 export default {}

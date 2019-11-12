@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import 'react-placeholder/lib/reactPlaceholder.css';
 
 import {
   Input,
@@ -32,7 +33,6 @@ class Info extends PureComponent {
   render() {
     const { info } = this.props
     const { query } = this.state
-    console.log(info.data)
 
     return (
       <Container>
@@ -42,14 +42,14 @@ class Info extends PureComponent {
           onSubmit={this.onSubmit}
         />
         <Row>
-          <Common data={info.data} />
-          <Dates data={info.data} />
+          <Common data={info.data} loading={info.isLoading} />
+          <Dates data={info.data} loading={info.isLoading} />
         </Row>
         <Row>
-          <Risks risk={info.data.risk} factors={info.data.riskfactors} />
-          <Attributes data={info.data.attributes} />
+          <Risks risk={info.data.risk} factors={info.data.riskfactors} loading={info.isLoading} />
+          <Attributes data={info.data.attributes} loading={info.isLoading} />
         </Row>
-        <Properties data={info.data.properties} />
+        <Properties data={info.data.properties} loading={info.isLoading} />
       </Container>
     )
   }

@@ -12,4 +12,9 @@ export const Container = styled.div`
     box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.12);
 `
 
+export const Row = styled.div`
+    display: flex;
+    margin-top: 30px;
+`
+
 export default {}

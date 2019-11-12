@@ -2,11 +2,11 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { Input, Common } from 'components'
+import { Input, Common, Dates } from 'components'
 
 import { fetchInfo } from 'store/actions'
 
-import { Container } from './styles'
+import { Container, Row } from './styles'
 
 class Info extends PureComponent {
   state = { query: '' }
@@ -25,7 +25,7 @@ class Info extends PureComponent {
   render() {
     const { info } = this.props
     const { query } = this.state
-    console.log(info)
+    console.log(info.data)
 
     return (
       <Container>
@@ -34,7 +34,10 @@ class Info extends PureComponent {
           onChange={this.onChange}
           onSubmit={this.onSubmit}
         />
-        <Common data={info.data} />
+        <Row>
+          <Common data={info.data} />
+          <Dates data={info.data} />
+        </Row>
       </Container>
     )
   }

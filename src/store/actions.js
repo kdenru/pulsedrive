@@ -6,7 +6,11 @@ export const fetchInfo = query => (dispatch) => {
   dispatch({ type: FETCH_INFO });
   axios.post('https://glasswire.lapinet.ru/hosts/index.php', { query })
     .then(res => {
-      dispatch({ type: FETCH_INFO_SUCCESS, payload: res.data });
+      if (res.data.error) {
+        dispatch({ type: FETCH_INFO_ERROR, payload: res.data.error });
+      } else {
+        dispatch({ type: FETCH_INFO_SUCCESS, payload: res.data });
+      }
     })
     .catch(error => {
       dispatch({ type: FETCH_INFO_ERROR, payload: error });

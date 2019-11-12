@@ -7,6 +7,7 @@ export function rootReducer(state = initialState, action) {
     case FETCH_INFO:
       return {
         ...state,
+        error: false,
         isLoading: true,
       }
     case FETCH_INFO_ERROR:

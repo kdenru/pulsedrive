@@ -18,4 +18,10 @@ export const Row = styled.div`
     justify-content: space-between;
 `
 
-export default {}
+export const Error = styled.div`
+    height: 300px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`

@@ -14,7 +14,7 @@ import {
 
 import { fetchInfo } from 'store/actions'
 
-import { Container, Row } from './styles'
+import { Container, Row, Error } from './styles'
 
 class Info extends PureComponent {
   state = { query: '' }
@@ -41,15 +41,25 @@ class Info extends PureComponent {
           onChange={this.onChange}
           onSubmit={this.onSubmit}
         />
-        <Row>
-          <Common data={info.data} loading={info.isLoading} />
-          <Dates data={info.data} loading={info.isLoading} />
-        </Row>
-        <Row>
-          <Risks risk={info.data.risk} factors={info.data.riskfactors} loading={info.isLoading} />
-          <Attributes data={info.data.attributes} loading={info.isLoading} />
-        </Row>
-        <Properties data={info.data.properties} loading={info.isLoading} />
+        {info.error
+          ? <Error>No results found :(</Error>
+          : (
+            <>
+              <Row>
+                <Common data={info.data} loading={info.isLoading} />
+                <Dates data={info.data} loading={info.isLoading} />
+              </Row>
+              <Row>
+                <Risks
+                  risk={info.data.risk}
+                  loading={info.isLoading}
+                  factors={info.data.riskfactors}
+                />
+                <Attributes data={info.data.attributes} loading={info.isLoading} />
+              </Row>
+              <Properties data={info.data.properties} loading={info.isLoading} />
+            </>
+          )}
       </Container>
     )
   }

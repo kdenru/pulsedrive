@@ -2,7 +2,12 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { Input, Common, Dates } from 'components'
+import {
+  Input,
+  Common,
+  Dates,
+  Attributes,
+} from 'components'
 
 import { fetchInfo } from 'store/actions'
 
@@ -37,6 +42,9 @@ class Info extends PureComponent {
         <Row>
           <Common data={info.data} />
           <Dates data={info.data} />
+        </Row>
+        <Row>
+          <Attributes data={info.data.attributes} />
         </Row>
       </Container>
     )

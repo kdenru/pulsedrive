@@ -26,7 +26,7 @@ class Info extends PureComponent {
   }
 
   onChange = event => {
-    const query = event.target.value;
+    const query = event.target.value.trim();
     this.setState({ query })
   }
 
